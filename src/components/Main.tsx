@@ -1,9 +1,9 @@
 const Main = () => {
 	return (
-		<div className="flex justify-between items-center min-h-screen px-10">
+		<div className="flex justify-between items-center min-h-screen px-36">
 			<div>
 				<h1
-					className="text-6xl mb-7 font-black max-w-lg"
+					className="text-7xl mb-7 font-black max-w-xl"
 					style={{
 						backgroundImage:
 							"linear-gradient(47deg, rgba(149,99,255,1) 25%, rgba(164,120,255,1) 50%, rgba(173,134,255,1) 75%, rgba(184,149,255,1) 100%)",
