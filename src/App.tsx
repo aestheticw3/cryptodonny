@@ -1,17 +1,20 @@
+import ErrorMsg from "./components/ErrorMsg";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { MetaMaskContextProvider } from "./providers/MetaMaskProvider";
+import { useMetaMask } from "./hooks/useMetaMask";
 
 // TODO: Add react-router-dom or something like that
 
 const App = () => {
+	const { error } = useMetaMask();
 	return (
-		<MetaMaskContextProvider>
+		<>
 			<Header />
 			<main>
 				<Main />
 			</main>
-		</MetaMaskContextProvider>
+			{error && <ErrorMsg />}
+		</>
 	);
 };
 

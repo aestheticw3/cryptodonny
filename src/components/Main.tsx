@@ -3,15 +3,7 @@ import { useMetaMask } from "../hooks/useMetaMask";
 import { formatAddress, formatChainAsNum } from "../utils/index.ts";
 
 const Main = () => {
-	const {
-		wallet,
-		hasProvider,
-		isConnecting,
-		connectMetaMask,
-		error,
-		errorMessage,
-		clearError,
-	} = useMetaMask();
+	const { wallet, hasProvider, isConnecting, connectMetaMask } = useMetaMask();
 	return (
 		<div className="flex justify-between items-center min-h-screen px-16">
 			<div>
@@ -55,13 +47,6 @@ const Main = () => {
 						<div>Numeric ChainId: {formatChainAsNum(wallet.chainId)}</div>
 					</>
 				)}
-				<div style={error ? { backgroundColor: "brown" } : {}}>
-					{error && (
-						<div onClick={clearError}>
-							<strong>Error:</strong> {errorMessage}
-						</div>
-					)}
-				</div>
 			</div>
 
 			<img className="w-1/3 pb-10" src={BitcoinPNG} alt="shape-img" />
