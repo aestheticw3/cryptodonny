@@ -1,14 +1,15 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
+import { MetaMaskContextProvider } from "./hooks/useMetaMask";
 
 const App = () => {
 	return (
-		<div className="">
+		<MetaMaskContextProvider>
 			<Header />
-			<main className="">
+			<main>
 				<Main />
 			</main>
-		</div>
+		</MetaMaskContextProvider>
 	);
 };
 
