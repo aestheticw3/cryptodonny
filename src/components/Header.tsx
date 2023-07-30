@@ -1,5 +1,4 @@
 import BitcoinLOGO from "../assets/bitcoin-logo.png";
-import MetamaskLOGO from "../assets/metamask-logo.svg";
 import { useMetaMask } from "../hooks/useMetaMask";
 import { formatAddress } from "../utils/index.ts";
 
@@ -17,11 +16,10 @@ const Header = () => {
 			</div>
 
 			{!hasProvider && (
-					<a href="https://metamask.io" target="_blank">
-						Install MetaMask
-					</a>
-				) &&
-				"❌" && <img src={MetamaskLOGO} alt="Metamask Logo" className="w-5" />}
+				<a href="https://metamask.io" target="_blank">
+					Install MetaMask
+				</a>
+			)}
 			{hasProvider && wallet.accounts.length > 0 && (
 				<button
 					disabled={isConnecting}

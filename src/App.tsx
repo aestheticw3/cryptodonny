@@ -1,6 +1,8 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { MetaMaskContextProvider } from "./hooks/useMetaMask";
+import { MetaMaskContextProvider } from "./providers/MetaMaskProvider";
+
+// TODO: Add react-router-dom or something like that
 
 const App = () => {
 	return (
