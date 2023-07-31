@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-	useState,
-	useEffect,
-	createContext,
 	PropsWithChildren,
+	createContext,
 	useCallback,
+	useEffect,
+	useState,
 } from "react";
 
 import detectEthereumProvider from "@metamask/detect-provider";
 import { formatBalance } from "../utils/index.ts";
+import { Buffer } from "buffer";
 
 interface WalletState {
 	accounts: any[];
@@ -23,6 +24,7 @@ interface MetaMaskContextData {
 	errorMessage: string;
 	isConnecting: boolean;
 	connectMetaMask: () => void;
+	generateAPIKey: () => Promise<string>;
 	clearError: () => void;
 }
 
@@ -117,8 +119,26 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 		} catch (err: any) {
 			setErrorMessage(err.message);
 		}
+
 		setIsConnecting(false);
-		// TODO: Navigate to the settings page
+	};
+
+	// TODO: Move converting to utils
+
+	const generateAPIKey = async () => {
+		const message = "Generate an API key on CryptoDonny dapp";
+		try {
+			const from = wallet.accounts[0];
+			const msg = `0x${Buffer.from(message, "utf8").toString("hex")}`;
+			const sign = await window.ethereum.request({
+				method: "personal_sign",
+				params: [msg, from],
+			});
+
+			return sign;
+		} catch (err: any) {
+			setErrorMessage(err.message);
+		}
 	};
 
 	return (
@@ -130,6 +150,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 				errorMessage,
 				isConnecting,
 				connectMetaMask,
+				generateAPIKey,
 				clearError,
 			}}
 		>

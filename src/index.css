@@ -9,29 +9,23 @@
 	}
 
 	* {
-		font-family: "Exo_2";
-		@apply m-0 p-0 box-border text-[#F4EEFF];
+		@apply m-0 p-0 box-border font-main text-zinc-200;
 	}
 
 	:root {
-		background: linear-gradient(
-			135deg,
-			rgba(24, 19, 37, 1) 0%,
-			rgba(42, 33, 64, 1) 50%,
-			rgba(61, 48, 94, 1) 100%
-		);
-		background-repeat: no-repeat;
-		@apply text-[#e4e4e3] min-h-screen;
+		@apply bg-root;
 	}
 
 	body {
-		background-image: url("./assets/bg-shape.png");
-		background-repeat: no-repeat;
-		background-size: cover;
+	}
+
+	h1 {
+		-webkit-background-clip: "text";
+		@apply bg-heading text-8xl pb-3 font-black text-transparent bg-clip-text;
 	}
 
 	button {
-		@apply bg-teal-400 text-neutral-700 text-base font-extrabold rounded-xl px-4 py-2;
+		@apply hover:bg-[#52d1dd] transition-colors duration-150 bg-[#21c9d8] text-neutral-800 text-base font-extrabold rounded-xl px-4 py-2;
 	}
 }
 
