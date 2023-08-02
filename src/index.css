@@ -9,19 +9,11 @@
 	}
 
 	* {
-		@apply m-0 p-0 box-border font-main text-zinc-200;
+		@apply m-0 p-0 box-border font-main text-[#F4EEFF];
 	}
 
 	:root {
 		@apply bg-root;
-	}
-
-	body {
-	}
-
-	h1 {
-		-webkit-background-clip: "text";
-		@apply bg-heading text-8xl pb-3 font-black text-transparent bg-clip-text;
 	}
 
 	button {

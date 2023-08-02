@@ -10,7 +10,7 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<Header />
-			<main className="min-h-screenWithoutHeader ">
+			<main className="h-screenWithoutHeader">
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="settings" element={<Settings />} />

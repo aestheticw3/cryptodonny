@@ -1,31 +1,47 @@
-import { useState } from "react";
 import { useMetaMask } from "../hooks/useMetaMask";
+import { verifyMessage } from "../utils/index.ts";
 
 const Settings = () => {
-	const [userSign, setUserSign] = useState<string | undefined>(undefined);
-	const { wallet, generateAPIKey } = useMetaMask();
-	return (
-		<div className="pt-20">
-			<div className="flex flex-col m-auto p-10 max-w-[90%] bg-[#27262C] rounded-xl">
-				<h1 className="text-5xl mb-7">Settings</h1>
-				<p className="mb-4 max-w-full">Your API Key: </p>
-				<textarea
-					disabled
-					className="bg-[#27262C] mb-7 border border-[#383241] rounded-xl"
-					value={
-						userSign &&
-						"https://cryptodonny/" + wallet.accounts[0] + "/" + userSign
-					}
-				></textarea>
+	const { wallet, userSign, generateAPIKey } = useMetaMask();
 
-				<button
-					onClick={async () => {
-						generateAPIKey().then(APIKey => setUserSign(APIKey));
-					}}
-				>
-					Generate the API Key
-				</button>
-			</div>
+	return (
+		<div className="h-full px-3 py-5 bg-[#27262C]">
+			<h1 className="text-3xl mb-6">Settings</h1>
+			<p className="mb-5 text-[#21c9d8]">
+				{userSign ? "Don't show it anyone 🤫" : "Your API Key:"}
+			</p>
+
+			<textarea
+				disabled
+				className="bg-[#27262C] w-full h-auto mb-6 border border-[#383241] rounded-xl"
+				// TODO: Reset on wallet changing
+				value={
+					userSign &&
+					"https://cryptodonny/" + wallet.accounts[0] + "/" + userSign
+				}
+			></textarea>
+
+			<button
+				className="w-full"
+				onClick={async () => {
+					if (userSign) {
+						navigator.clipboard.writeText(
+							"https://cryptodonny/" + wallet.accounts[0] + "/" + userSign
+						);
+						console.log(
+							verifyMessage(
+								"Generate an API key on CryptoDonny dapp",
+								userSign,
+								wallet.accounts[0]
+							)
+						);
+						return;
+					}
+					generateAPIKey();
+				}}
+			>
+				{userSign ? "Copy" : "Generate the API Key"}
+			</button>
 		</div>
 	);
 };

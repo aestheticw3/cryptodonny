@@ -1,5 +1,7 @@
 // import { Buffer } from "buffer";
 
+import { ethers } from "ethers";
+
 export const formatBalance = (rawBalance: string) => {
 	const balance = (parseInt(rawBalance) / 1000000000000000000).toFixed(2);
 	return balance;
@@ -15,6 +17,18 @@ export const formatAddress = (addr: string) => {
 		addr.length - 4,
 		addr.length
 	)}`;
+};
+
+export const verifyMessage = async (
+	msg: string,
+	sign: string,
+	addr: string
+): Promise<boolean | undefined> => {
+	try {
+		return ethers.utils.verifyMessage(msg, sign).toLowerCase() === addr;
+	} catch (err) {
+		console.log("Something went wrong: ", err);
+	}
 };
 
 // export const convertStringAsUTF8Hex = (msg: string) => {

@@ -8,13 +8,14 @@ import {
 } from "react";
 
 import detectEthereumProvider from "@metamask/detect-provider";
-import { formatBalance } from "../utils/index.ts";
 import { Buffer } from "buffer";
+import { formatBalance } from "../utils/index.ts";
 
 interface WalletState {
 	accounts: any[];
 	balance: string;
 	chainId: string;
+	connected: boolean;
 }
 
 interface MetaMaskContextData {
@@ -22,9 +23,10 @@ interface MetaMaskContextData {
 	hasProvider: boolean | null;
 	error: boolean;
 	errorMessage: string;
+	userSign: string;
 	isConnecting: boolean;
 	connectMetaMask: () => void;
-	generateAPIKey: () => Promise<string>;
+	generateAPIKey: () => void;
 	clearError: () => void;
 }
 
@@ -32,6 +34,7 @@ const disconnectedState: WalletState = {
 	accounts: [],
 	balance: "",
 	chainId: "",
+	connected: false,
 };
 
 export const MetaMaskContext = createContext<MetaMaskContextData>(
@@ -41,9 +44,11 @@ export const MetaMaskContext = createContext<MetaMaskContextData>(
 export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 	const [hasProvider, setHasProvider] = useState<boolean | null>(null);
 
-	const [isConnecting, setIsConnecting] = useState(false);
+	const [isConnecting, setIsConnecting] = useState<boolean>(false);
 
-	const [errorMessage, setErrorMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState<string>("");
+	const [userSign, setUserSign] = useState<string>("");
+
 	const clearError = () => setErrorMessage("");
 
 	const [wallet, setWallet] = useState(disconnectedState);
@@ -52,6 +57,8 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 		const accounts =
 			providedAccounts ||
 			(await window.ethereum.request({ method: "eth_accounts" }));
+
+		setUserSign("");
 
 		if (accounts.length === 0) {
 			// If there are no accounts, then the user is disconnected
@@ -69,7 +76,9 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 			method: "eth_chainId",
 		});
 
-		setWallet({ accounts, balance, chainId });
+		const connected = true;
+
+		setWallet({ accounts, balance, chainId, connected });
 	}, []);
 
 	const updateWalletAndAccounts = useCallback(
@@ -135,7 +144,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 				params: [msg, from],
 			});
 
-			return sign;
+			setUserSign(sign);
 		} catch (err: any) {
 			setErrorMessage(err.message);
 		}
@@ -148,6 +157,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 				hasProvider,
 				error: !!errorMessage,
 				errorMessage,
+				userSign,
 				isConnecting,
 				connectMetaMask,
 				generateAPIKey,
