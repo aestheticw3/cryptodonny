@@ -10,7 +10,7 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<Header />
-			<main className="h-screenWithoutHeader">
+			<main className="flex justify-center items-center md:justify-start h-screen w-10/12 sm:w-11/12 mx-auto">
 				<Routes>
 					<Route path="/" element={<Main />} />
 					<Route path="settings" element={<Settings />} />

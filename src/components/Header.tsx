@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import BitcoinLOGO from "../assets/bitcoin-logo.png";
+
 import { useMetaMask } from "../hooks/useMetaMask";
 import { formatAddress } from "../utils/index.ts";
 
@@ -8,29 +8,34 @@ const Header = () => {
 
 	return (
 		<header
-			className={`w-screen px-3 py-2 flex ${"justify-between"} items-center font-black bg-[#27262C] border-b border-b-[#383241]`}
+			className={`fixed top-3 w-11/12 sm:w-full sm:top-5 left-0 right-0 text-firefly  max-w-2xl mx-auto rounded-full px-3 py-2 flex justify-between items-center bg-banana`}
 		>
-			<Link to="/" className="flex items-center text-xl pb-1">
-				<img
-					src={BitcoinLOGO}
-					alt="Bitcoin Logo"
-					className="w-5 mr-1.5 pt-0.5"
-				/>
-				Crypto<span className="text-t-primary text-xl">Donny</span>
-			</Link>
+			<div className="bg-firefly px-3 pt-0.5 pb-1 rounded-full">
+				<Link
+					to="/"
+					className="font-extrabold uppercase text-transparent bg-clip-text"
+					style={{
+						backgroundImage:
+							"linear-gradient(to right, red, orange 20%, yellow 40%, green 60%, #0096FF 80%, #7F00FF)",
+					}}
+				>
+					CryptoDonny
+				</Link>
+			</div>
 
-			{!hasProvider && (
-				<a href="https://metamask.io" target="_blank">
-					Install MetaMask
-				</a>
-			)}
 			{wallet.connected && (
 				<button
 					disabled={isConnecting}
 					onClick={connectMetaMask}
-					className="px-3 pt-0.5 pb-1 bg-[#353547] text-[#F4EEFF]"
+					className="bg-firefly text-banana px-3 pt-0.5 pb-1"
 				>
-					{formatAddress(wallet.accounts[0])}{" "}
+					{!hasProvider ? (
+						<a href="https://metamask.io" target="_blank">
+							Install MetaMask
+						</a>
+					) : (
+						formatAddress(wallet.accounts[0])
+					)}
 				</button>
 			)}
 		</header>

@@ -9,11 +9,13 @@ const Main = () => {
 	return (
 		// bg-mainShape bg-no-repeat bg-contain bg-bottom
 
-		<div className="h-full text-center flex flex-col justify-center items-center">
-			<h1 className="bg-heading text-4xl 2xl:text-2xl mb-3 pb-2 font-black text-transparent bg-clip-text">
-				Donation alerts for your stream
+		<div className="text-center sm:items-start  flex flex-col justify-center items-center">
+			<h1 className="text-banana text-5xl sm:text-6xl sm:text-left sm:max-w-lg mb-5 pb-2 font-black leading-10 sm:leading-none">
+				Donation alerts for&nbsp;your stream
 			</h1>
-			<p className="font-extrabold mb-8">Totally free, safe and fast!</p>
+			<p className="text-lg font-extrabold mb-7 text-zircon ">
+				Totally free, safe and fast!
+			</p>
 
 			{!hasProvider && (
 				<p>
@@ -26,7 +28,7 @@ const Main = () => {
 			)}
 			{window.ethereum?.isMetaMask && wallet.accounts.length < 1 && (
 				<button
-					className="uppercase "
+					className="uppercase"
 					disabled={isConnecting}
 					onClick={connectMetaMask}
 				>
@@ -34,9 +36,7 @@ const Main = () => {
 				</button>
 			)}
 			{wallet.connected && (
-				<button className="uppercase" onClick={() => navigate("settings")}>
-					{"Settings"}
-				</button>
+				<button onClick={() => navigate("settings")}>Settings</button>
 			)}
 
 			<img className="w-1/3 pb-16 hidden" src={BitcoinPNG} alt="BitcoinPNG" />

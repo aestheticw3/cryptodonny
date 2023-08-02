@@ -5,15 +5,18 @@ const Settings = () => {
 	const { wallet, userSign, generateAPIKey } = useMetaMask();
 
 	return (
-		<div className="h-full px-3 py-5 bg-[#27262C]">
-			<h1 className="text-3xl mb-6">Settings</h1>
-			<p className="mb-5 text-[#21c9d8]">
-				{userSign ? "Don't show it anyone 🤫" : "Your API Key:"}
+		<div className="p-5 pt-4 bg-[#014751] rounded-xl">
+			<h1 className="text-3xl mb-6 font-bold text-banana">Settings</h1>
+			<p className="mb-5 text-zircon">
+				{userSign
+					? "Don't show this link to anyone 🤫"
+					: "Click the button below to sign the message (that costs nothing) and generate your API key:"}
 			</p>
 
 			<textarea
 				disabled
-				className="bg-[#27262C] w-full h-auto mb-6 border border-[#383241] rounded-xl"
+				rows={3}
+				className="bg-firefly w-full mb-6 p-2 border border- border-[#B8B4B8] rounded-xl resize-none"
 				// TODO: Reset on wallet changing
 				value={
 					userSign &&
@@ -40,7 +43,7 @@ const Settings = () => {
 					generateAPIKey();
 				}}
 			>
-				{userSign ? "Copy" : "Generate the API Key"}
+				{userSign ? "Copy" : "Generate"}
 			</button>
 		</div>
 	);

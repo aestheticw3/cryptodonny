@@ -6,14 +6,20 @@ export default {
 			fontFamily: {
 				main: ["Exo_2", "sans-serif"],
 			},
-			backgroundImage: {
-				root: "linear-gradient( 135deg, rgba(24, 19, 37, 1) 0%, rgba(42, 33, 64, 1) 50%, rgba(61, 48, 94, 1) 100% )",
-				heading:
-					"linear-gradient(110deg,rgba(120, 100, 255, 1) 25%,rgba(140, 120, 255, 1) 50%,rgba(160, 140, 255, 1) 75%,rgba(180, 120, 255, 1) 100%)",
-				mainShape: `url("./assets/bg-shape.png")`,
+			backgroundColor: {
+				banana: "#ffeeb4",
+				emerald: "#014751",
+				firefly: "#0f2830",
+				zircon: "#F8FBFF",
 			},
-			height: {
-				screenWithoutHeader: "calc(100vh - 49px)",
+			colors: {
+				banana: "#ffeeb4",
+				emerald: "#014751",
+				firefly: "#0f2830",
+				zircon: "#F8FBFF",
+			},
+			screens: {
+				sm: "893px",
 			},
 		},
 	},
