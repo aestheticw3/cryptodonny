@@ -17,7 +17,7 @@
 	}
 
 	button {
-		@apply bg-banana text-firefly font-extrabold rounded-full px-7 pt-2.5 pb-3 uppercase;
+		@apply bg-banana text-firefly font-bold rounded-full uppercase;
 	}
 }
 

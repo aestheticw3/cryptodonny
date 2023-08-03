@@ -8,7 +8,7 @@ const Header = () => {
 
 	return (
 		<header
-			className={`fixed top-3 w-11/12 sm:w-full sm:top-5 left-0 right-0 text-firefly  max-w-2xl mx-auto rounded-full px-3 py-2 flex justify-between items-center bg-banana`}
+			className={`fixed top-3 w-11/12 sm:w-full sm:top-5 left-0 right-0 text-firefly  max-w-2xl mx-auto rounded-full p-2 flex justify-between items-center bg-banana`}
 		>
 			<div className="bg-firefly px-3 pt-0.5 pb-1 rounded-full">
 				<Link
