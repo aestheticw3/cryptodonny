@@ -25,7 +25,13 @@ export const verifyMessage = async (
 	addr: string
 ): Promise<boolean | undefined> => {
 	try {
-		return ethers.utils.verifyMessage(msg, sign).toLowerCase() === addr;
+		console.log(msg);
+		console.log(sign);
+		console.log(addr);
+
+		return (
+			ethers.utils.verifyMessage(msg, sign).toLowerCase() === addr.toLowerCase()
+		);
 	} catch (err) {
 		console.log("Something went wrong: ", err);
 	}
