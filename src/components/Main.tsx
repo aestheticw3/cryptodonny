@@ -7,7 +7,7 @@ const Main = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="pt-10 sm:pt-0 text-center flex flex-col justify-center items-center">
+		<div className="pt-12 sm:pt-14 text-center flex flex-col justify-center items-center">
 			<h1 className="text-banana text-5xl lg:text-7xl sm:max-w-3xl mb-5 sm:mb-10 pb-2 font-black leading-10 sm:leading-none">
 				Donation alerts for&nbsp;your stream
 			</h1>
