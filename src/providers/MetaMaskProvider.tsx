@@ -155,7 +155,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 			value={{
 				wallet,
 				hasProvider,
-				error: !!errorMessage,
+				error: Boolean(errorMessage),
 				errorMessage,
 				userSign,
 				isConnecting,

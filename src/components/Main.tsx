@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import BitcoinPNG from "../assets/bitcoin.png";
 import { useMetaMask } from "../hooks/useMetaMask";
 
 const Main = () => {
@@ -34,8 +33,6 @@ const Main = () => {
 			>
 				{wallet.connected ? "Settings" : "Connect MetaMask"}
 			</button>
-
-			<img className="w-1/3 pb-16 hidden" src={BitcoinPNG} alt="BitcoinPNG" />
 		</div>
 	);
 };

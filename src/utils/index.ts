@@ -1,5 +1,3 @@
-// import { Buffer } from "buffer";
-
 import { ethers } from "ethers";
 
 export const formatBalance = (rawBalance: string) => {
