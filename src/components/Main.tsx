@@ -8,7 +8,7 @@ const Main = () => {
 
 	return (
 		<div className="text-center flex flex-col justify-center items-center">
-			<h1 className="text-banana text-5xl min-[809px]:text-7xl sm:max-w-3xl mb-5 sm:mb-10 pb-2 font-black leading-10 sm:leading-none">
+			<h1 className=" text-5xl min-[809px]:text-7xl sm:max-w-3xl mb-5 sm:mb-10 pb-2 font-black leading-10 sm:leading-none">
 				Donation alerts for&nbsp;your stream
 			</h1>
 			<p className="text-lg lg:text-2xl font-extrabold mb-7 sm:mb-10 text-zircon ">

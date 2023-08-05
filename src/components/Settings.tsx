@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import qs from "qs";
 import { useRef } from "react";
 import { useMetaMask } from "../hooks/useMetaMask";
@@ -8,7 +9,7 @@ const Settings = () => {
 
 	return (
 		<div className="px-5 py-8 md:w-2/3 2xl:w-1/2 bg-[#014751] rounded-xl">
-			<h1 className="text-3xl mb-6 font-bold text-banana">Settings</h1>
+			<h2 className="text-3xl mb-6 font-bold">Settings</h2>
 			<p className="mb-7 text-zircon">
 				{userSign
 					? "Copy and don't show the link to anyone 🤫"

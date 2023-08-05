@@ -21,7 +21,7 @@ const Alerts = () => {
 
 	return (
 		<div className="pt-20">
-			{access ? "You got access!" : "Your link is wrong"}
+			{access ? "You have got access!" : "Your link is wrong"}
 		</div>
 	);
 };
