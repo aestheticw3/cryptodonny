@@ -28,10 +28,10 @@ const Alerts = () => {
 	useEffect(() => {
 		const playSound = () => {
 			audioRef.current.play();
-			setIsPlaying(prev => !prev);
+			setIsPlaying(true);
 			audioRef.current.onended = () => {
-				setTimeout(() => setIsPlaying(prev => !prev), 2000);
-				setTimeout(playSound, 10000);
+				setTimeout(() => setIsPlaying(false), 2000);
+				setTimeout(playSound, 5000);
 			};
 		};
 		playSound();
