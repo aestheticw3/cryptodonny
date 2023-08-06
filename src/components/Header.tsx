@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
-
 import { useMetaMask } from "../hooks/useMetaMask";
 import { formatAddress } from "../utils/index.ts";
 
 const Header = () => {
-	const { wallet, hasProvider, isConnecting, connectMetaMask } = useMetaMask();
+	const {
+		wallet,
+		hasProvider,
+		isConnecting,
+		connectMetaMask,
+		disconnectMetaMask,
+	} = useMetaMask();
 
 	return (
 		<header
@@ -23,20 +28,22 @@ const Header = () => {
 				</Link>
 			</div>
 
-			{wallet.connected && (
+			{hasProvider ? (
 				<button
 					disabled={isConnecting}
-					onClick={connectMetaMask}
-					className="bg-firefly text-banana px-3 pt-0.5 pb-1"
+					onClick={() =>
+						wallet.connected ? disconnectMetaMask() : connectMetaMask()
+					}
+					className={`${
+						!wallet.connected && "hidden"
+					} bg-firefly text-banana px-3 pt-0.5 pb-1`}
 				>
-					{!hasProvider ? (
-						<a href="https://metamask.io" target="_blank">
-							Install MetaMask
-						</a>
-					) : (
-						formatAddress(wallet.accounts[0])
-					)}
+					{wallet.connected && formatAddress(wallet.accounts[0])}
 				</button>
+			) : (
+				<a href="https://metamask.io" target="_blank">
+					Install MetaMask
+				</a>
 			)}
 		</header>
 	);

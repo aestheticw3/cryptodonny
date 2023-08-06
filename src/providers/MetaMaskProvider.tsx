@@ -25,6 +25,7 @@ interface MetaMaskContextData {
 	errorMessage: string;
 	userSign: string;
 	isConnecting: boolean;
+	disconnectMetaMask: () => void;
 	connectMetaMask: () => void;
 	generateAPIKey: () => void;
 	clearError: () => void;
@@ -132,6 +133,10 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 		setIsConnecting(false);
 	};
 
+	const disconnectMetaMask = () => {
+		setWallet(prev => ({ ...prev, connected: false }));
+	};
+
 	// TODO: Move converting to utils
 
 	const generateAPIKey = async () => {
@@ -160,6 +165,7 @@ export const MetaMaskContextProvider = ({ children }: PropsWithChildren) => {
 				userSign,
 				isConnecting,
 				connectMetaMask,
+				disconnectMetaMask,
 				generateAPIKey,
 				clearError,
 			}}
