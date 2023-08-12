@@ -23,10 +23,6 @@ export const verifyMessage = async (
 	addr: string
 ): Promise<boolean | undefined> => {
 	try {
-		console.log(msg);
-		console.log(sign);
-		console.log(addr);
-
 		return (
 			ethers.utils.verifyMessage(msg, sign).toLowerCase() === addr.toLowerCase()
 		);
