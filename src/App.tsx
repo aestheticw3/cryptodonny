@@ -4,6 +4,7 @@ import ErrorMsg from "./components/ErrorMsg";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Settings from "./components/Settings";
+
 import { MetaMaskContextProvider } from "./providers/MetaMaskProvider";
 
 const App = () => {

@@ -14,7 +14,17 @@ const Main = () => {
 				Totally free, safe and fast!
 			</p>
 
-			{!hasProvider && (
+			{hasProvider ? (
+				<button
+					className="uppercase px-7 pt-2.5 pb-3 lg:text-xl lg:pt-2.5 lg:px-10 lg:pb-3"
+					disabled={isConnecting}
+					onClick={() => {
+						wallet.connected ? navigate("settings") : connectMetaMask();
+					}}
+				>
+					{wallet.connected ? "Settings" : "Connect MetaMask"}
+				</button>
+			) : (
 				<p>
 					You should install{" "}
 					<a href="https://metamask.io" target="_blank">
@@ -23,16 +33,6 @@ const Main = () => {
 					to use the dapp
 				</p>
 			)}
-
-			<button
-				className="uppercase px-7 pt-2.5 pb-3 lg:text-xl lg:pt-2.5 lg:px-10 lg:pb-3"
-				disabled={isConnecting}
-				onClick={() => {
-					wallet.connected ? navigate("settings") : connectMetaMask();
-				}}
-			>
-				{wallet.connected ? "Settings" : "Connect MetaMask"}
-			</button>
 		</div>
 	);
 };
