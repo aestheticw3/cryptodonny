@@ -1,4 +1,10 @@
-import { Alchemy, AlchemySubscription, BigNumber, Network } from "alchemy-sdk";
+import {
+	Alchemy,
+	AlchemySubscription,
+	Utils,
+	Network,
+	BigNumber,
+} from "alchemy-sdk";
 import { parse } from "qs";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -60,7 +66,7 @@ const Alerts = () => {
 					nonce: "0x18e",
 					to: "0xdfea9cd587575948171d336506437bf392f09e5a",
 					transactionIndex: "0x2f",
-					value: "0x2386f26fc10000",
+					value: BigNumber.from("0x2386f26fc10000"),
 					type: "0x2",
 					accessList: [],
 					chainId: "0x89",
@@ -118,7 +124,7 @@ const Alerts = () => {
 				<div className="h-full">
 					{isPlaying && (
 						<>
-							<img className="h-2/3 mb-5" src={donation} alt="Donation" />
+							<img className="w-full mb-5" src={donation} alt="Donation" />
 							<h1
 								className="text-2xl text-white font-bold mb-5"
 								style={{
@@ -127,7 +133,8 @@ const Alerts = () => {
 							>
 								{curDon?.transaction.from}
 								<br />
-								{BigNumber.from(curDon?.transaction.value) + "ETH!"}
+								{curDon?.transaction &&
+									Utils.formatEther(curDon.transaction.value) + " MATIC!"}
 							</h1>
 						</>
 					)}

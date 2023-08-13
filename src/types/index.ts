@@ -1,3 +1,5 @@
+import { BigNumber } from "alchemy-sdk";
+
 export interface TxResponse {
 	removed: boolean;
 	transaction: {
@@ -13,7 +15,7 @@ export interface TxResponse {
 		nonce: string;
 		to: string;
 		transactionIndex: string;
-		value: string;
+		value: BigNumber;
 		type: string;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		accessList: any[];
