@@ -18,9 +18,9 @@
 		@apply text-banana;
 	}
 
-	body {
+	/* body {
 		@apply bg-firefly;
-	}
+	} */
 
 	button {
 		@apply bg-banana text-firefly font-bold rounded-full uppercase;

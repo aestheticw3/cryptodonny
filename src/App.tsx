@@ -14,13 +14,15 @@ const App = () => {
 				<Route
 					path="/"
 					element={
-						<MetaMaskContextProvider>
-							<Header />
-							<main className="flex justify-center items-center h-[100dvh] w-11/12 mx-auto">
-								<Outlet />
-							</main>
-							<ErrorMsg />
-						</MetaMaskContextProvider>
+						<div className="bg-firefly">
+							<MetaMaskContextProvider>
+								<Header />
+								<main className="flex justify-center items-center  h-[100dvh] w-11/12 mx-auto">
+									<Outlet />
+								</main>
+								<ErrorMsg />
+							</MetaMaskContextProvider>
+						</div>
 					}
 				>
 					<Route index element={<Main />} />

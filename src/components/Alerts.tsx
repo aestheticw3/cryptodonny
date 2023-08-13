@@ -1,9 +1,9 @@
 import {
 	Alchemy,
 	AlchemySubscription,
-	Utils,
-	Network,
 	BigNumber,
+	Network,
+	Utils,
 } from "alchemy-sdk";
 import { parse } from "qs";
 import { useEffect, useRef, useState } from "react";
@@ -119,7 +119,7 @@ const Alerts = () => {
 	}, [donationsQueue]);
 
 	return (
-		<div className="flex justify-center items-center text-center h-screen w-screen bg-[#00FF00]">
+		<div className="flex justify-center items-center text-center h-screen w-screen">
 			{access ? (
 				<div className="h-full">
 					{isPlaying && (
