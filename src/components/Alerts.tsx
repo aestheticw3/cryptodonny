@@ -1,10 +1,4 @@
-import {
-	Alchemy,
-	AlchemySubscription,
-	BigNumber,
-	Network,
-	Utils,
-} from "alchemy-sdk";
+import { Alchemy, AlchemySubscription, Network, Utils } from "alchemy-sdk";
 import { parse } from "qs";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -49,35 +43,6 @@ const Alerts = () => {
 			setAccess(Boolean(res));
 		});
 
-		setDonationsQueue(dons => [
-			{
-				removed: false,
-				transaction: {
-					blockHash:
-						"0x794ce9d963c75591b843fa63047e0d79fa1a99f0be9d5785b46e67de06f1767",
-					blockNumber: "0x2c0f14e",
-					from: "0xdfea9cd587575948171d336506437bf392f09e5a",
-					gas: "0xee48",
-					gasPrice: "0x1d17e6fd04",
-					maxFeePerGas: "0x23a766d5a0",
-					maxPriorityFeePerGas: "0x86da13f26",
-					hash: "0x5bba669b634eb3512c4bc7531127b372b3593da8315912fdbdbebbcc30c8f506",
-					input: "0x",
-					nonce: "0x18e",
-					to: "0xdfea9cd587575948171d336506437bf392f09e5a",
-					transactionIndex: "0x2f",
-					value: BigNumber.from("0x2386f26fc10000"),
-					type: "0x2",
-					accessList: [],
-					chainId: "0x89",
-					v: "0x0",
-					r: "0xc871efc45c6ce41a6827ba826c068f9c397d0b73367d993b15f09fafc5488291",
-					s: "0x2348175a2b294e9d3cb9843368314c94f953bdfd49323b1b06b96f1d1ab6fd85",
-				},
-			},
-			...dons,
-		]);
-
 		typeof address === "string" &&
 			alchemy.ws.on(
 				{
@@ -100,7 +65,7 @@ const Alerts = () => {
 			audioRef.current.onended = null;
 			alchemy.ws.removeAllListeners();
 		};
-	}, []);
+	}, [params.addressWithSign]);
 
 	useEffect(() => {
 		if (access) {
