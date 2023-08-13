@@ -48,7 +48,7 @@ const Alerts = () => {
 				removed: false,
 				transaction: {
 					blockHash:
-						"0x794ce9d963c75591b843fa63047e0d79fa1a99f0be9d5785b46e6e7de06f1767",
+						"0x794ce9d963c75591b843fa63047e0d79fa1a99f0be9d5785b46e67de06f1767",
 					blockNumber: "0x2c0f14e",
 					from: "0xdfea9cd587575948171d336506437bf392f09e5a",
 					gas: "0xee48",
