@@ -103,28 +103,34 @@ const Alerts = () => {
 	}, []);
 
 	useEffect(() => {
-		const checkDons = setInterval(() => {
-			console.log("Checking has started...");
-			console.log(donationsQueue);
-			if (donationsQueue.length) {
-				setCurDon(donationsQueue[0]);
-				playSoundRef.current();
-				setDonationsQueue(dons => dons.slice(1));
-			}
-		}, 5000);
+		if (access) {
+			const checkDons = setInterval(() => {
+				console.log("Checking has started...");
+				console.log(donationsQueue);
+				if (donationsQueue.length) {
+					setCurDon(donationsQueue[0]);
+					playSoundRef.current();
+					setDonationsQueue(dons => dons.slice(1));
+				}
+			}, 10000);
 
-		return () => {
-			clearInterval(checkDons);
-		};
-	}, [donationsQueue]);
+			return () => {
+				clearInterval(checkDons);
+			};
+		}
+	}, [donationsQueue, access]);
 
 	return (
 		<div className="flex justify-center items-center text-center h-screen w-screen">
 			{access ? (
 				<div className="h-full">
 					{isPlaying && (
-						<>
-							<img className="w-full mb-5" src={donation} alt="Donation" />
+						<div className="h-full">
+							<img
+								className="h-5/6 w-full mb-5"
+								src={donation}
+								alt="DonationImg"
+							/>
 							<h1
 								className="text-2xl text-white font-bold mb-5"
 								style={{
@@ -136,7 +142,7 @@ const Alerts = () => {
 								{curDon?.transaction &&
 									Utils.formatEther(curDon.transaction.value) + " MATIC!"}
 							</h1>
-						</>
+						</div>
 					)}
 				</div>
 			) : (
